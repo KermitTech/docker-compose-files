@@ -103,3 +103,9 @@ SELECT * FROM dba_log_groups WHERE owner='TEST01';
 ALTER SESSION SET container=cdb$root;
 
 EXECUTE dbms_logmnr_d.build(options=> dbms_logmnr_d.store_in_redo_logs);
+
+/* give c##streamsets write permission on users */
+
+ALTER SESSION SET container=PDB1;
+
+ALTER USER C##STREAMSETS quota unlimited ON users;
