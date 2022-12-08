@@ -82,22 +82,6 @@ ALTER SYSTEM switch logfile;
 
 ALTER SESSION SET container=PDB1;
 
-CREATE USER test01 IDENTIFIED BY test01;
-
-GRANT CONNECT,RESOURCE TO test01;
-
-ALTER USER test01 quota unlimited ON users;
-
-CREATE TABLE test01.table01 (column1 varchar2(10),column2 integer);
-
-ALTER TABLE test01.table01 ADD supplemental LOG data (PRIMARY KEY) columns;
-
-INSERT INTO test01.table01 VALUES('One',1);
-
-select value from v$parameter where name='service_names';
-
-SELECT * FROM dba_log_groups WHERE owner='TEST01';
-
 /* to set Redo Logs */
 
 ALTER SESSION SET container=cdb$root;
